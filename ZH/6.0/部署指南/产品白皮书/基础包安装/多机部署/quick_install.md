@@ -50,7 +50,7 @@
 
    ```bash
    install -d -m 755 /data/src/cert
-   tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+   tar xvf /data/ssl_certificates.tar.gz -C /data/src/cert/
    chmod 644 /data/src/cert/*
    ```
 
