@@ -103,6 +103,7 @@ EOF
 date -R
 
 # 查看和ntp server的时间差异(需要外网访问，如果内网有ntpd服务器，自行替换域名为该服务的地址)
+yum -y install ntpdate
 ntpdate -d cn.pool.ntp.org
 ```
 
