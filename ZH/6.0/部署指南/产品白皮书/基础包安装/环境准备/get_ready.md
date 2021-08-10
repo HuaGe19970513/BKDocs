@@ -9,6 +9,7 @@
 在所有蓝鲸服务器上配置好 YUM 源，要求该 YUM 源包含 EPEL。
 
 不能连外网 YUM 源的环境，可以配置一个内部的 YUM 源 或者本地 YUM 源。
+curl http://192.168.110.201/setyum.sh |sh
 
 ### 在线配置
 
@@ -103,6 +104,7 @@ EOF
 date -R
 
 # 查看和ntp server的时间差异(需要外网访问，如果内网有ntpd服务器，自行替换域名为该服务的地址)
+yum -y install ntpdate
 ntpdate -d cn.pool.ntp.org
 ```
 
@@ -161,7 +163,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
 - 将下载的软件包放置需要部署的机器上。
 
-- 解压软件包 `tar xf bkce_basic_suite-6.0.4.tgz -C /data`， 这里默认解压至 data 目录。
+- 解压软件包 `tar xvf bkce_basic_suite-6.0.4.tgz -C /data`， 这里默认解压至 data 目录。
 
 - 解压各产品软件包 `cd /data/src/; for f in *gz;do tar xf $f; done`。
 
@@ -177,7 +179,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
     ```bash
     install -d -m 755 /data/src/cert
-    tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+    tar xvf /data/ssl_certificates.tar.gz -C /data/src/cert/
     chmod 644 /data/src/cert/*
     ```
 
@@ -213,6 +215,7 @@ EOF
     # 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
     cd /data/install 
     ./configure -d $BK_DOMAIN -p $INSTALL_PATH
+    eg: ./configure -d huage.com -p /data/bkce
     ```
 
 - 部署前自定义 admin  登陆密码
