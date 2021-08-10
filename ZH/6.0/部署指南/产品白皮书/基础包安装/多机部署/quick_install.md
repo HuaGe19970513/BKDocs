@@ -37,14 +37,14 @@
 1. 解压套餐包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
 
    ```bash
-   cd /data
-   tar xf bkce_basic_suite-6.0.4.tgz
+   mkdir /data
+   tar xvf bkce_basic_suite-6.0.4.tgz -C /data
    ```
 
 2. 解压各个产品软件包
 
    ```bash
-   cd /data/src/; for f in *gz;do tar xf $f; done
+   cd /data/src/; for f in *gz;do tar xvf $f; done
    ```
 
 3. 解压证书包
