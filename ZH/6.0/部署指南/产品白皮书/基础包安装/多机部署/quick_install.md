@@ -32,6 +32,7 @@
 - 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包
 
 ### 1.4 解压相关资源包
+用xshell拖拽文件先安装这个yum -y install lrzsz
 
 1. 解压套餐包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
 
@@ -83,6 +84,10 @@ EOF
 ```bash
 cd /data/install
 bash /data/install/configure_ssh_without_pass
+
+#查看中控机
+cat /data/install/.controller_ip
+for i in $(cat /data/install/install.config|awk '{print $1}');do ssh $i 'hostname';done
 ```
 
 ## 二、开始部署
